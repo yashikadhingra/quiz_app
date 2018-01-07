@@ -1,0 +1,15 @@
+<div *ngIf="quizzes?.length > count;else noQuiz">
+<p>{{count+1}}:{{quizset.question}}</p>
+ <div *ngFor="let option of quizset.options;let x=index"  class="options">
+ <label>
+ <input type="radio" name="mode" (click)="checkanswer($event)" [value]="option" attr.id="option_{{x}}"   attr.answer="{{quizset.answer}}">
+{{option}}</label>
+ </div>
+<button [disabled]="!isValidForm(isValid)" (click)="submit()">Submit</button>
+</div>
+
+<ng-template #noQuiz>
+<h5>There are no more questions in the list.</h5>
+<p>Thanks for attempting the quiz</p>
+<p>your score is:{{score}}</p>
+</ng-template>
